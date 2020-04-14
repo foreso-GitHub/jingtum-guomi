@@ -84,19 +84,11 @@ func BytesToPrivateKey(bytes []byte) *sm2.PrivateKey {
 }
 
 func PublicKeyToBytes(publicKey *sm2.PublicKey) []byte {
-	xBytes := BigIntToBytes(publicKey.X)
-	yBytes := BigIntToBytes(publicKey.Y)
-	bytes := append(xBytes, yBytes...)
-	return bytes
+	return sm2.Compress(publicKey)
 }
 
-func BytesToPublicKey(bytes []byte) *sm2.PublicKey {
-	size := 32
-	xBytes := bytes[:size]
-	yBytes := bytes[size:]
-	x := BytesToBigInt(xBytes)
-	y := BytesToBigInt(yBytes)
-	return RestorePublicKey(x, y)
+func BytesToPublicKey(publicKeyBytes []byte) *sm2.PublicKey {
+	return sm2.Decompress(publicKeyBytes)
 }
 
 //endregion

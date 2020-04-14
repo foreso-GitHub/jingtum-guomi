@@ -40,6 +40,8 @@ func generateExample() {
 	fmt.Printf("[GenerateKey Test] real publicKey:%x\n", publicKey)
 	fmt.Printf("[GenerateKey Test] is privateKey correct? %t\n",
 		guomi.StringToBigInt(seedPrivateKey).String() == guomi.BytesToBigInt(privateKey).String())
+	fmt.Printf("[GenerateKey Test] privateKey length: %v\n", len(privateKey))
+	fmt.Printf("[GenerateKey Test] publicKey length: %v\n", len(publicKey))
 	fmt.Printf("\n")
 
 	privateKeyObject := guomi.BytesToPrivateKey(privateKey)
@@ -60,10 +62,11 @@ func generateExample() {
 		log.Fatal(err)
 	}
 	fmt.Printf("[GenerateKey Test] convert bytes to privateKey object: %x\n", priv2)
-	pubString := guomi.PublicKeyToBytes(&privateKeyObject.PublicKey)
-	fmt.Printf("[GenerateKey Test] convert publicKey object to bytes:%x\n", pubString)
-	pubRes := guomi.BytesToPublicKey(pubString)
-	fmt.Printf("[GenerateKey Test] convert bytes to publicKey object:%#v\n", pubRes)
+	pubBytes := guomi.PublicKeyToBytes(&privateKeyObject.PublicKey)
+	fmt.Printf("[GenerateKey Test] convert publicKey object to bytes: %x\n", pubBytes)
+	fmt.Printf("[GenerateKey Test] publicKey bytes length: %v\n", len(pubBytes))
+	pubRes := guomi.BytesToPublicKey(pubBytes)
+	fmt.Printf("[GenerateKey Test] convert bytes to publicKey object: %#v\n", pubRes)
 	fmt.Printf("\n")
 
 	msg := []byte("Jingtum Blockchain Guomi Module")
@@ -78,7 +81,7 @@ func generateExample() {
 		log.Fatal(err)
 	}
 	if !bytes.Equal(msg, plaintxt) {
-		log.Fatal("原文不匹配")
+		log.Fatal("Decrypt text doesn't match raw message!")
 	}
 	fmt.Printf("[GenerateKey Test] decrypt result: %s\n", plaintxt)
 
