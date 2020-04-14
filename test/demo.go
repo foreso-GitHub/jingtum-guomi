@@ -4,7 +4,7 @@ import (
 	"../gmsm/sm2"
 	"../gmsm/sm3"
 	"../gmsm/sm4"
-	"./guomi"
+	"../guomi"
 	"bytes"
 	"crypto/cipher"
 	"math/big"

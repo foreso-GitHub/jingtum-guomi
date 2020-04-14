@@ -1,8 +1,8 @@
 package guomi
 
 import (
-	"../../gmsm/sm2"
-	"../../gmsm/sm3"
+	"../gmsm/sm2"
+	"../gmsm/sm3"
 	"crypto/elliptic"
 	"errors"
 	"log"
