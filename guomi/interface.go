@@ -171,17 +171,6 @@ func randFieldElementBySeed(c elliptic.Curve, seed []byte) (k *big.Int, err erro
 //region sign
 
 func (sm Sm) Sign(privateKey []byte, hash []byte, msg []byte) ([]byte, error) {
-	//var input = []byte("")
-	//if hash != nil && msg != nil{
-	//	return nil, errors.New("Both hash and msg exists!")
-	//} else if hash != nil && msg == nil{
-	//	input = hash
-	//} else if hash == nil && msg != nil{
-	//	input = msg
-	//} else {
-	//	return nil, errors.New("Neither hash nor msg exists!")
-	//}
-
 	input, err := SelectInput(hash, msg)
 	if err != nil {
 		return nil, err
@@ -201,17 +190,6 @@ func (sm Sm) Sign(privateKey []byte, hash []byte, msg []byte) ([]byte, error) {
 }
 
 func (sm Sm) Verify(publicKey []byte, hash []byte, msg []byte, signature []byte) (bool, error) {
-	//var input = []byte("")
-	//if hash != nil && msg != nil{
-	//	return false, errors.New("Both hash and msg exists!")
-	//} else if hash != nil && msg == nil{
-	//	input = hash
-	//} else if hash == nil && msg != nil{
-	//	input = msg
-	//} else {
-	//	return false, errors.New("Neither hash nor msg exists!")
-	//}
-
 	input, err := SelectInput(hash, msg)
 	if err != nil {
 		return false, err
