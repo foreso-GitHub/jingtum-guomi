@@ -16,12 +16,12 @@ func hashExample() {
 	var sm guomi.Hashable
 	sm = new(guomi.Sm)
 	data := "Jingtum Blockchain Guomi Module"
-	expectedhash := "a131b88817e7aac559f0a05c7650dbce8c39585586eb62a4af3f47b76f55487e"
+	expectedHash := "a131b88817e7aac559f0a05c7650dbce8c39585586eb62a4af3f47b76f55487e"
 	hash := sm.Hash([]byte(data))
 	fmt.Printf("[Hash test] data is: %s\n", data)
 	fmt.Printf("[Hash test] digest value is: %x\n", hash)
 	fmt.Printf("[Hash test] is hash correct? %t\n",
-		guomi.StringToBigInt(expectedhash).String() == guomi.BytesToBigInt(hash).String())
+		guomi.StringToBigInt(expectedHash).String() == guomi.BytesToBigInt(hash).String())
 	fmt.Printf("\n")
 }
 
